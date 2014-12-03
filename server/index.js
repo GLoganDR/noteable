@@ -2,8 +2,14 @@
 
 var Hapi         = require('hapi'),
   server         = new Hapi.Server('0.0.0.0', process.env.PORT),
-  routes         = require('./routes/config/routes'),
   plugins        = require('./routes/config/plugins'),
-  authentication = require('./routes/config/authentication');
+  routes         = require('./routes/config/routes');
+  //authentication = require('./routes/config/authentication');
+server.route(routes);
 
+server.pack.register(plugins, function(){
+  server.start(function(){
+    server.log('info', 'Server running at: ' + server.info.uri);
+  });
+});
 
