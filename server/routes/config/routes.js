@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = [
-    {method: 'get',    path: '/',           config: require('../definitions/home/get_home')}
-
+    {method: 'get', path: '/{param*}', config: require('../definitions/static/angular')},
+    {method: 'post', path: '/register', config: require('../definitions/users/register')}
 ];

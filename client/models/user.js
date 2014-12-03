@@ -1,30 +1,20 @@
 (function(){
   'use strict';
 
-  angular.module('hapi-auth')
-    .factory('User', ['$rootScope', '$http', function($rootScope, $http){
+  angular.module('noteable')
+  .factory('User', ['$http', function($http){
+    function register(user){
+      return $http.post('/register', user);
+    }
 
-      $rootScope.$watch('rootuser', function(user){
-        if(user){
-          socket.connect();
-        }else{
-          socket.disconnect();
-          $rootScope.online = false;
-        }
-      });
+    function login(user){
+      return $http.post('/login', user);
+    }
 
-      function register(user){
-        return $http.post('/register', user);
-      }
+    function logout(){
+      return $http.delete('/logout');
+    }
 
-      function login(user){
-        return $http.post('/login', user);
-      }
-
-      function logout(){
-        return $http.delete('/logout');
-      }
-
-      return {register:register, login:login, logout:logout};
-    }]);
+    return {register:register, login:login, logout:logout};
+  }]);
 })();
