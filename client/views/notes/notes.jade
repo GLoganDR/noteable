@@ -1,0 +1,19 @@
+h1 {{mode | uppercase}}
+.row
+   .small-2.columns
+   .small-4.columns
+      h3 Create A Note
+   .small-6.columns
+.row
+   .small-12.columns
+      form
+         .row
+            .small-6.columns
+               label Title:
+               input(type='text', name='title', ng-model='note.title', placeholder='Name of Note')
+               label Body:
+               textarea(type='text', name='body', ng-model='note.body', placeholder='Enter Content')
+               label Tags:
+               input(type='text', name='tags', ng-model='note.tags', placeholder='Enter Tags')
+               button(ng-click='create(note)') Save
+            .small-6.columns
